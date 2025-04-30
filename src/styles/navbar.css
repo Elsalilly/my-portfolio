@@ -8,3 +8,31 @@ li:hover {
     color:rgb(114, 174, 228);
     transform:scale(1.2);
 }
+
+
+@media screen and (min-width: 1022px) and (max-width: 1200px) {
+  nav {
+    margin-left: 30px;
+  }
+}
+
+@media screen and (min-width: 980px) and (max-width: 1022px) {
+  nav {
+    margin-left: -30px;
+  }
+}
+
+@media screen and (min-width: 700px) and (max-width: 980px) {
+  nav {
+    margin-left: -30px;
+  }
+ 
+}
+
+@media screen and (min-width: 300px) and (max-width: 770px) {
+  p {
+    margin-left: 30px;
+  }
+  
+ 
+}

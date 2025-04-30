@@ -37,7 +37,7 @@ const closePopup = () => {
 
 //HTML
 return (
-  <div className="relative min-h-screen">
+  <div className="relative z-0 min-h-screen">
     <div className="flex justify-center mb-8 mt-6">
         <button onClick={() => setShowProjects(!showProjects)}
             className="bg-transparent hover:bg-[#d69c9c] text-blakc mt-8 font-semibold hover:text-white py-2 px-4 border border-[#d69c9c] hover:border-transparent rounded transition-all duration-500 ease-in-out">
