@@ -1,0 +1,142 @@
+.popup-window {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    padding: 30px;
+    border: 10px solid oklch(96.2% 0.059 95.617);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+
+    max-width: 650px;
+    width: 70%;
+    max-height: 90vh;
+    box-sizing: border-box;
+    overflow-y: auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.popup-window .title {
+    font-size: 25px;
+    font-weight: 700;
+    word-break: break-word;
+}
+
+.popup-window .tech {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 7px;
+    word-break: break-word;
+}
+
+.popup-window .link {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 7px;
+    word-break: break-word;
+}
+
+.popup-window .info {
+    font-size: 17px;
+    font-weight: 400;
+    margin-bottom: 7px;
+    word-break: break-word;
+}
+
+.popup-window .close-button {
+    font-size: 14px;
+    font-weight: 700;
+    padding: 7px 12px;
+    border: 1px solid #d69c9c;
+    cursor: pointer;
+    margin-top: 10px;
+    border-radius: 3px;
+
+    transition: all 0.5s ease-in-out;
+}
+
+img {
+    position: relative;
+}
+
+.link {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.close-button:hover {
+    background-color: #d69c9c;
+    color: white;
+    border-color: transparent;
+}
+
+.link:hover {
+    color:#d69c9c;
+    transform: translateX(2.5);
+}
+
+@media screen and (min-width: 700px) and (max-width: 900px) {
+    .popup-window {
+        padding: 20px;
+        width: 70%;
+        max-width: none;
+    }
+    .popup-window .title {
+        font-size: 20px;
+        margin-bottom: 7px;
+    }
+
+    .popup-window .link {
+        font-size: 14px;
+    }
+    
+    .popup-window .tech {
+        font-size: 14px;
+        margin-bottom: 7px;
+        margin-top: 10px;
+    }
+    
+    .popup-window .info {
+        font-size: 13px;
+        margin-bottom: 7px;
+    }
+
+    .popup-window .close-button {
+        font-size: 14px;
+    }
+}
+
+@media screen and (min-width: 300px) and (max-width: 700px) {
+    .popup-window {
+        padding: 15px;
+        width: 80%;
+    }
+    .popup-window .title {
+        font-size: 17px;
+        margin-bottom: 7px;
+    }
+
+    .popup-window .link {
+        font-size: 13px;
+        margin-bottom: 7px;
+    }
+    
+    .popup-window .tech {
+        font-size: 12px;
+        margin-bottom: 7px;
+        margin-top: 10px;
+    }
+    
+    .popup-window .info {
+        font-size: 12px;
+        margin-bottom: 7px;
+    }
+
+    .popup-window .close-button {
+        font-size: 12px;
+    }
+}
