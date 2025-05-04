@@ -7,8 +7,13 @@ import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
 import '../styles/navbar.css';
 
 
-function Navbar() {
+const Navbar = ({search, setSearch}) => {
 const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+const handleChange = (e) => {
+    setSearch(e.target.value);
+    console.log(e.target.value);
+}
 
 const BurgerMenu = () => {
     console.log('Hamburger button clicked');
@@ -20,20 +25,29 @@ const closeMenu = () => {
     setIsMenuOpen(false);
 };
 
+
     return (
-        <header className="md:sticky top-0 z-10">
+        <header className="md:flex top-0 z-10">
             <div className="container mx-auto p-5 flex items-center justify-between">
                 <p className="text-3xl font-bold text-center md:absolute md:left-1/2 md:transform md:-translate-x-1/2">
                     ELSA MERTALA
                 </p>
-                
                 <nav className="hidden md:flex items-center space-x-6">
                       <Link to="/">Home</Link>
                       <Link to="/work">Work</Link>
                       <Link to="/about">About</Link>
                       <Link to="/contact">Contact</Link>
                 </nav>
-
+                <div className="hidden md:flex items-center text-center md:absolute top-3 right-7">
+                    <input
+                        type="text"
+                        id="search"
+                        className="border border-gray-300 rounded-lg px-4 py-2 w-1/1"
+                        placeholder="Search..."
+                        value={search}
+                        onChange={handleChange}
+                    />
+                </div>
                 <button 
                     onClick={BurgerMenu}
                     className="md:hidden text-gray-600 hover:text-gray-800 focus:outline"
@@ -52,13 +66,20 @@ const closeMenu = () => {
                     <FontAwesomeIcon icon={faXmark}/>
                 </button>
 
-                <nav className="flex flex-col items-center space-y-6 text-3xl">
-                    <Link to="/" onClick={closeMenu} className="hover:bg-[#d8d7d0]">Home</Link>
-                    <Link to="/work" onClick={closeMenu} className="hover:bg-[#d8d7d0]">Work</Link>
-                    <Link to="/about" onClick={closeMenu} className="hover:bg-[#d8d7d0]">About</Link>
-                    <Link to="/contact" onClick={closeMenu} className="hover:bg-[#d8d7d0]">Contact</Link>
+                <nav className="flex flex-col items-center space-y-6">
+                    <Link to="/" onClick={closeMenu} className="hover:bg-[#d8d7d0] text-3xl">Home</Link>
+                    <Link to="/work" onClick={closeMenu} className="hover:bg-[#d8d7d0] text-3xl">Work</Link>
+                    <Link to="/about" onClick={closeMenu} className="hover:bg-[#d8d7d0] text-3xl">About</Link>
+                    <Link to="/contact" onClick={closeMenu} className="hover:bg-[#d8d7d0] text-3xl">Contact</Link>
+                    <input
+                        type="text"
+                        id="search"
+                        className="border border-gray-300 rounded-lg px-4 py-2 w-1/2"
+                        placeholder="Search..."
+                        value={search}
+                        onChange={handleChange}
+                    />
                 </nav>
-
             </div>
 )}
         </header>

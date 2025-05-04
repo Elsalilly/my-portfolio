@@ -13,13 +13,14 @@ import Navbar from './components/NavBar.jsx';
 
 
 function App() {
+  const [search, setSearch] = useState("");
 return (
   <>
     <BrowserRouter>
-      <Navbar></Navbar>
+      <Navbar search={search} setSearch={setSearch}/>
       <Routes>
         <Route path="/" element={<Home/>} />
-        <Route path="/work" element={<Work/>} />
+        <Route path="/work" element={<Work search={search}/>} />
         <Route path="/about" element={<About/>} />
         <Route path="/contact" element={<Contact/>} />
       </Routes>

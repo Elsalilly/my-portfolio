@@ -2,7 +2,9 @@
 function Home() {
     return (
         <div>
-            Homepage
+            <h1>Front-end developer</h1>
+            <h2>UX Designer</h2>
+            <h3>Anthropologist</h3>
         </div>
     );
 }
