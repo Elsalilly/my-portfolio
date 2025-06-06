@@ -28,15 +28,15 @@ const closeMenu = () => {
 
     return (
         <header className="md:flex top-0 z-10">
-            <div className="container mx-auto p-5 flex items-center justify-between">
-                <p className="text-3xl font-bold text-center md:absolute md:left-1/2 md:transform md:-translate-x-1/2">
+            <div className="container mx-auto p-5 px-10 flex items-center justify-between">
+                <p className="title text-3xl font-bold text-center md:absolute md:left-1/2 md:transform md:-translate-x-1/2">
                     ELSA MERTALA
                 </p>
                 <nav className="hidden md:flex items-center space-x-6">
-                      <Link to="/">Home</Link>
-                      <Link to="/work">Work</Link>
-                      <Link to="/about">About</Link>
-                      <Link to="/contact">Contact</Link>
+                      <Link to="/" className="hover:underline">Home</Link>
+                      <Link to="/work" className="hover:underline">Work</Link>
+                      {/*<Link to="/about" className="hover:underline">About</Link>*/}
+                      <Link to="/contact" className="hover:underline">Contact</Link>
                 </nav>
                 <div className="hidden md:flex items-center text-center md:absolute top-3 right-7">
                     <input
@@ -69,16 +69,8 @@ const closeMenu = () => {
                 <nav className="flex flex-col items-center space-y-6">
                     <Link to="/" onClick={closeMenu} className="hover:bg-[#d8d7d0] text-3xl">Home</Link>
                     <Link to="/work" onClick={closeMenu} className="hover:bg-[#d8d7d0] text-3xl">Work</Link>
-                    <Link to="/about" onClick={closeMenu} className="hover:bg-[#d8d7d0] text-3xl">About</Link>
+                    {/*<Link to="/about" onClick={closeMenu} className="hover:bg-[#d8d7d0] text-3xl">About</Link>*/}
                     <Link to="/contact" onClick={closeMenu} className="hover:bg-[#d8d7d0] text-3xl">Contact</Link>
-                    <input
-                        type="text"
-                        id="search"
-                        className="border border-gray-300 rounded-lg px-4 py-2 w-1/2"
-                        placeholder="Search..."
-                        value={search}
-                        onChange={handleChange}
-                    />
                 </nav>
             </div>
 )}

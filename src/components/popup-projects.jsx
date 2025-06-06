@@ -27,7 +27,7 @@ const PopupWindow = ({
             <p className="info">{info}</p>
             <p className="tags">
                 {tags?.map((tag, index) => (
-                    <span key={index} className="text-[#d69c9c] mr-2 px-2 py-1 border-1 border-[#d69c9c] rounded text-xs sm:text-xs md:text-sm lg:text-base">
+                    <span key={index} className="text-black mr-2 px-2 py-1 border-1 border-[#d69c9c] hover:bg-[#d69c9c] hover:text-white rounded text-xs sm:text-xs md:text-sm lg:text-base">
                     {tag}
                     </span>
                 ))}

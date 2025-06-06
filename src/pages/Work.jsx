@@ -1,19 +1,20 @@
-import { useState } from 'react'
 import React from 'react'
 import '../styles/work.css';
 
 //components
-import PopupWindow from '../components/popup-projects.jsx';
-import ProjectsPort from "../components/Projects.jsx";
+//import PopupWindow from '../components/popup-projects.jsx';
+//import ProjectsPort from "../components/Projects.jsx";
+import FadeInWork from '../components/motion-work.jsx';
+import SplitImage from '../components/splitImage.jsx';
 
 //Images
-import ImgTravel from '../assets/website-travel.png';
-import ImgWeb from '../assets/website-portfolio.png';
-import ImgShop from '../assets/website-shopping.png';
+import ImgTravel from '../assets/website-travel.avif';
+import ImgWeb from '../assets/website-portfolio.avif';
+import ImgShop from '../assets/website-shopping.avif';
 
 //Icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faReact, faJsSquare, faHtml5, faCss3Alt, faSass } from "@fortawesome/free-brands-svg-icons";
+import { faHtml5, faCss3Alt, faSass } from "@fortawesome/free-brands-svg-icons";
 
 const projectsData = [ {
   pTitle: "Travel Website, 2025",
@@ -58,24 +59,6 @@ const projectsData = [ {
 
 const Work = ({search}) => {
 //Javascript
-const [showProjects, setShowProjects] = useState(false); //Set to false, projects hidden
-console.log('Opening:', showProjects);
-
-const [selectedProject, setSelectedProject] = useState(null);
-
-const [isOpen, setIsOpen] = useState(false);
-
-const openProjectPopup = (project) => {
-  console.log('Opening:', project);
-    setSelectedProject(project);
-    setIsOpen(true);
-};
-
-const closePopup = () => {
-  setSelectedProject(null);
-  setIsOpen(false);
-};
-
 const filteredProjects = projectsData.filter(project =>
   search === "" || project.tags.some(tag =>
     tag.toLowerCase().includes(search.toLowerCase())
@@ -85,54 +68,43 @@ const filteredProjects = projectsData.filter(project =>
 //HTML
 return (
   <div className="relative z-0 min-h-screen scroll-smooth">
-    <div className="flex justify-center mb-8 mt-6">
-        <button onClick={() => setShowProjects(!showProjects)}
-            className="bg-transparent hover:bg-[#d69c9c] text-blakc mt-8 font-semibold hover:text-white py-2 px-4 border border-[#d69c9c] hover:border-transparent rounded transition-all duration-500 ease-in-out">
-            {showProjects ? "Hide projects" : "View projects"}
-        </button>
+    <div className="w-full max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-6 p-8 transition-all duration-500 ease-in-out opacity-100 transform scale-100">
+        {filteredProjects.map((project, index) => (
+          <FadeInWork key={index} delay={index * 0.1}>
+            <SplitImage src={project.img} alt={project.altTitle} pTitle={project.pTitle}>
+              <h1 className="text-xl sm:text-2xl font-bold mb-2">{project.title}</h1>
+                  <a
+                    href={project.repo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-600 underline text-sm mb-2"
+                  >
+                    Link to repo
+                  </a>
+                  <div className="flex justify-center gap-3 text-2xl mb-2">
+                    {project.tech.map((item, i) => (
+                      <span key={i} style={{ color: item.color }}>
+                        <FontAwesomeIcon icon={item.icon} />
+                      </span>
+                    ))}
+                  </div>
+                  <div>
+                    <p className="text-sm text-gray-700 max-w-md mb-2">{project.info}</p>
+                  </div>
+                  <div className="flex flex-wrap gap-2 justify-center">
+                    {project.tags.map((tag, i) => (
+                      <span
+                        key={i}
+                        className="text-black border border-[#d69c9c] hover:bg-[#d69c9c] hover:text-white px-2 py-1 rounded text-xs sm:text-sm"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+            </SplitImage>
+          </FadeInWork>
+        ))}
     </div>
-  {/* A responsive grid layout - small screen one column, medium 2 columns etc*/}
-  {showProjects && (
-  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-8 transition-all duration-500 ease-in-out opacity-100 transform scale-100">
-      {filteredProjects.map((project, index) => (
-        <ProjectsPort
-          key={index}
-          pTitle={project.pTitle}
-          img={project.img}
-          title={project.title}
-          repo={project.repo}
-          tech={
-          <>
-            {project.tech.map((item, i) => (
-              <FontAwesomeIcon
-              key={i}
-              icon={item.icon}
-              style={{
-              marginRight: '10px',
-              color: item.color,
-              fontSize: '30px'
-              }}
-            />
-            ))}
-          </>
-          }
-          info={project.info}
-          tags={project.tags}
-          onClick={()=> openProjectPopup(project)}
-        />
-))}
-  </div>
- )}
-    {isOpen && selectedProject && (
-      <PopupWindow 
-        title={selectedProject.title} 
-        info={selectedProject.info}
-        tech={selectedProject.tech}
-        repo={selectedProject.repo}
-        tags={selectedProject.tags} 
-        onClick={closePopup}
-      />
-    )}
   </div>
 );
 }

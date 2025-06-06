@@ -39,40 +39,42 @@ return (
             </div>
         ) : (
             <form onSubmit={handleSubmit}>
-                <h2 className="text-2xl font-bold mb-4 text-center">Contact Me</h2>
-                <div className="mb-4">
-                    <label htmlFor="name" className="block text-gray-700">Full Name</label>
+                <div className="mb-4 mt-6">
+                    <label htmlFor="name" className="block text-gray-700">Full Name *</label>
                     <input
                     type="text"
                     id="name"
                     name="name"
+                    placeholder="Your name"
                     value={name}
                     onChange={handleNameChange}
-                    className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#d69c9c]"
+                    className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#d69c9c] invalid:text-rose-400 hover:bg-stone-50"
                     required
                     />
                 </div>
                 <div className="mb-4">
-                    <label htmlFor="email" className="block text-gray-700">Email</label>
+                    <label htmlFor="email" className="block text-gray-700">Email *</label>
                     <input
                     type="email"
                     id="email"
                     name="email"
+                    placeholder="Your email"
                     value={email}
                     onChange={handleEmailChange}
-                    className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#d69c9c]"
+                    className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#d69c9c] invalid:text-rose-400 hover:bg-stone-50"
                     required
                     />
                 </div>
                 <div className="mb-4">
-                    <label htmlFor="message" className="block text-gray-700">Message</label>
+                    <label htmlFor="message" className="block text-gray-700">Message *</label>
                     <textarea
                     type="text"
                     id="message"
                     name="message"
+                    placeholder="Your message"
                     value={message}
                     onChange={handleMessageChange}
-                    className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#d69c9c]"
+                    className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#d69c9c] invalid:text-rose-400 hover:bg-stone-50"
                     required
                     />
                 </div>
@@ -82,7 +84,7 @@ return (
                     className="px-6 py-3 bg-[#d69c9c] text-white font-semibold rounded-lg shadow-md hover:bg-white hover:border-[#d69c9c] border-2 border-[#d69c9c] hover:border-2 hover:text-[#d69c9c] focus:outline-none focus-ring-2 focus:ring-[#d8d7d0] focus-ring-opacity-50"
                     onChange={handleBtnChange}
                     >
-                        Send Message
+                        Submit
                     </button>
                 </div>
             </form>
